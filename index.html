@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katakomba</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="settings" class="mt-4 mb-4">
+        <h1 class="mb-3">Varázslatos katakomba</h1>
+        <form>
+          <div class="row g-3 align-items-center mb-3">
+            <div class="col-auto">
+              <label for="playerInput" class="col-form-label"
+                >Játékosok száma</label
+              >
+            </div>
+            <div class="col-auto">
+              <input
+                type="number"
+                id="playerInput"
+                class="form-control"
+                min="1"
+                max="4"
+                value="2"
+              />
+            </div>
+          </div>
+          <div class="row g-3 align-items-center mb-3">
+            <div class="col-auto">
+              <label for="treasureInput" class="col-form-label"
+                >Kincsek száma
+              </label>
+            </div>
+            <div class="col-auto">
+              <input
+                type="number"
+                id="treasureInput"
+                class="form-control"
+                min="1"
+                max="12"
+                value="2"
+              />
+            </div>
+          </div>
+        </form>
+        <button id="startButton" class="btn btn-primary mt-2">Start</button>
+        <button id="descriptionButton" class="btn btn-secondary mt-2">
+          Leírás
+        </button>
+        <div id="loadGameArea" class="mt-3">
+          <h2>Elérhető mentés:</h2>
+          <button class="btn btn-success">2021. 11. 11. 15:31:37</button>
+        </div>
+      </div>
+      <div id="description" hidden>
+        <h1>A játék leírása</h1>
+        <p>
+          A katakomba szobáit egy 7x7-es négyzetrács cellái jelképezik. Minden
+          szoba esetén adott, hogy mely falain van ajtó. Ha két szomszédos szoba
+          érintkező falán egy-egy ajtó van, akkor át lehet menni egyik szobából
+          a másikba. A négyzetrács páros sorait és oszlopait el lehet tolni, a
+          többi szoba végig rögzített a játék során. Az eltolásokkal az ajtókon
+          keresztül utak nyílnak a szobák között, így lehet eljutni a
+          kincsekhez. Mindegyik kérő arra törekszik, hogy a katakomba szobáinak
+          ötletes eltolásával eljusson a kincsekhez. Aki elsőként találja meg
+          mindahányat és kiindulópontjára sikeresen visszaérkezik az a nyertes.
+        </p>
+        <p>
+          A játék elején a szobákat véletlen sorrendben és véletlen irányban
+          kirakjuk a játéktábla szabad mezőire. A szobák közül az egyik
+          mindenképpen fölösleges marad. A játék folyamán majd mindig az éppen
+          kimaradó szobát használjuk a többi szoba elcsúsztatására. A játékban
+          legfeljebb 24 kincset kell megtalálni. Ezeket véletlen sorrendben
+          felrakjuk a táblára úgy, hogy egy mezőn csak egy kincs lehet, és a
+          sarokba nem rakhatunk, majd az ezeket jelző kártyákat összekeverjük,
+          és egyenlő számban szétosztjuk a játékosok között, felfedve mindig a
+          legfelső kártyát. A játékosokat jelző figurákat a tábla külön sarkaiba
+          helyezzük.
+        </p>
+        <p>
+          A játék során minden játékosnak a kincsei közül azt kell megszereznie,
+          amit az aktuálisan legfelső, mindenki által látható kincskártya mutat.
+          Arra a mezőre kell eljutni. Ahhoz, hogy a célt elérje, a játékosnak
+        </p>
+        <ol>
+          <li>
+            először a katakombát kell átalakítania a kimaradt szoba
+            becsúsztatásával, és
+          </li>
+          <li>lépnie mindig csak ez után szabad a figurájával.</li>
+        </ol>
+        <p>
+          A katakomba átalakítása a következőképpen történik: A játékos a
+          kimaradt szobát (tetszőlegesen elforgatva) valamelyik oldalról
+          becsúsztathatja a játéktábla területére egy szabadon mozgó sor vagy
+          oszlop szélén, aminek következtében az átellenes oldalon kiesik egy
+          másik szoba. A tábla szélén nyilak jelzik azokat a helyeket, ahol a
+          szobát be lehet csúsztatni. A szoba bárhol betolható, kivétel ott,
+          ahol az imént kilökődött. Nem szabad tehát az előző játékos lépését
+          rögtön „visszacsinálni". Ha a szobák eltolása során a szobával együtt
+          egy figura is kitolódnék – akár másé, akár a miénk -, akkor ezt a
+          figurát az ellenkező oldalról imént becsúsztatott szobába kell
+          helyezni.
+        </p>
+        <p>
+          A szobák eltolását követi a játékos lépése a figurával. A katakomba
+          minden olyan pontjáig el lehet jutni, amelyet a kiindulóponttal
+          folyamatos járatvonal köt össze. Az ilyen járatokban tehát olyan
+          messzire mehetünk el, amilyen messzire csak akarunk, vagyis nem
+          számít, hogy hány szobán lépkedünk végig. Nem kötelező lépni.
+          Figuránkat akár ott is hagyhatjuk, ahol éppen van. Egy mezőn több
+          figura is állhat: a figurák nem ütik ki egymást. Ha valaki nem tud
+          rögtön céljáig eljutni, akkor figurájával addig a pontig célszerű
+          elmennie, ahol feltehetőleg jó helyzetben várhatja következő lépést.
+          Ha valaki elérte a felfedett kincskártya által megjelölt célt, akkor
+          felfedi a következőt, és most ehhez a célhoz igyekszik eljutni, stb.
+        </p>
+        <p>
+          A játék akkor ér véget, ha egy játékos az összes kincskártyájához
+          tartozó kincset megszerezte, és visszavezette a figuráját arra mezőre,
+          ahonnan elindult. Az a győztes, aki valamennyi kincsét megtalálta és
+          figuráját elsőként juttatta vissza a kiindulópontra.
+        </p>
+      </div>
+      <div id="gameArea" class="mb-4 mt-4" hidden="true">
+        <div class="row">
+          <div class="col-12 col-xxl">
+            <canvas height="720" width="720"></canvas>
+          </div>
+          <div class="col-12 col-xxl">
+            <div id="stats" class="col"></div>
+            <button id="saveButton" class="btn btn-primary mt-4">Mentés</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>

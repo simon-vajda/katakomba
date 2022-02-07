@@ -1,0 +1,27 @@
+canvas {
+  border: 1px solid black;
+}
+
+#stats {
+  font-size: 1.1em;
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-left: 3px solid black;
+}
+
+#stats div {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.current {
+  font-weight: bold;
+}
+
+p {
+  text-align: justify;
+}
+
+h2 {
+  font-size: 1.1em;
+}
